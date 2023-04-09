@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %} Heart Disease {% endblock title%}
+
+
+{% block body %}
+<div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact" action="" method="post">
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                  <h6>THE DISEASE PREDICTOR</h6>
+                  <h2>Heart <span>Disease</span> Diagnosis</h2>
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Age" id="Age" placeholder="Age" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Sex" id="Sex" placeholder="Sex[1: Male] [0: Female]" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Chest" id="Chest"  placeholder="Severity of chest pain"   autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Bloodpressure" id="Bloodpressure" placeholder="Recent Blood pressure value" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Cholestrol" id="Cholestrol" placeholder="Recent cholestrol value" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Bloodsugar" id="Bloodsugar" placeholder="Current sugar level" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Cardio" id="Cardio" placeholder="Resting electrocardiographic results" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Attack" id="Attack" placeholder="Maximum heart rate" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Exercise" id="Exercise" placeholder="Exercise induced angina" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Oldpeak" id="Oldpeak" placeholder="ST depression relative to rest" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Slope" id="Slope" placeholder="Slope of the peak exercise ST segment" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Vessel" id="vessel" placeholder="Number of major vessels colored by flourosopy" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Thal" id="Thal" placeholder="Thal value" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button ">Submit</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="contact-info">
+                  <ul>
+                    <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-01.png') }}" alt="email icon">
+                      </div>
+                      <a href="#">info@company.com</a>
+                    </li>
+                    <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-02.png') }}" alt="phone">
+                      </div>
+                      <a href="#">+001-002-0034</a>
+                    </li>
+                    <!-- <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-03.png') }}" alt="location">
+                      </div>
+                      <a href="#">26th Street, Digital Villa</a>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock body %}

@@ -1,0 +1,244 @@
+/* 
+
+App Landing Template
+
+http://www.templatemo.com/tm-474-app-landing
+
+*/
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/FiraSans-Light.eot');
+    src: local('Fira Sans Light'),
+         url('../fonts/FiraSans-Light.eot') format('embedded-opentype'),
+         url('../fonts/FiraSans-Light.woff') format('woff'),
+         url('../fonts/FiraSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/FiraSans-Regular.eot');
+    src: local('Fira Sans Regular'),
+         url('../fonts/FiraSans-Regular.eot') format('embedded-opentype'),
+         url('../fonts/FiraSans-Regular.woff') format('woff'),
+         url('../fonts/FiraSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/FiraSans-Bold.eot');
+    src: local('Fira Sans Bold'),
+         url('../fonts/FiraSans-Bold.eot') format('embedded-opentype'),
+         url('../fonts/FiraSans-Bold.woff') format('woff'),
+         url('../fonts/FiraSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+html {
+    overflow: hidden;
+}
+body {
+    animation-name: example;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-direction: alternate;  
+    animation-timing-function: ease-in-out;
+    overflow: auto;
+}
+
+@keyframes example {
+    0% {background: black url(../images/ologin3.jpg) fixed;
+        background-repeat: no-repeat;  
+        background-size:cover;
+        background-attachment:fixed;
+        background-position: center;}
+    50% {background: black url(../images/ologin3.png) fixed;
+        background-repeat: no-repeat;  
+        background-size:cover;
+        background-attachment:fixed;
+        background-position: center;}
+    100% {background: black url(../images/ologin2.jpg) fixed;
+        background-repeat: no-repeat;  
+        background-size:cover;
+        background-attachment:fixed;
+        background-position: center;}
+  }
+
+/***** Typography *****/
+body, p, a, th, td, li, dl, .form-control { font: normal normal 300 18px/2em 'Fira Sans';}
+b, strong, dt { font-weight: 400;}
+h1, h2, h3, h4, h5, h6 { line-height: 2em;}
+/***** Material Shadow *****/
+.shadow-top-down {
+    box-shadow: 0px 8px 8px -4px rgba(0,0,0,0.75);
+    transition: all .5s;
+}
+.shadow-top-down:hover { box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);}
+/***** Material Form Elements *****/
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+form .form-group { margin-top: 30px;}
+form input.form-control,
+form button.form-control,
+form textarea.form-control ,
+form select.form-control {
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #233842;
+    border-radius: 0px;
+    height: 45px;
+}
+form input.form-control:focus,
+form button.form-control:focus,
+form textarea.form-control:focus {
+    border-bottom-color: #c0c0c0;
+    box-shadow: none;
+}
+form button.form-control {
+    border: 1px solid white;
+    background-color: transparent;
+    transition: .5s;
+}
+form button.form-control[type=reset] { background-color: transparent;}
+form button.form-control:hover,
+form button.form-control:focus {
+    border-bottom-color: #275267;
+    background-color: gray;
+}
+form textarea.form-control { min-height: 120px;}
+form .input-group-addon { 
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #233842;
+    vertical-align: top;
+    border-radius: 0;
+    color: white;
+}
+form .input-group-addon i { padding-top: 10px;color: #000;}
+form .checkbox input[type=checkbox] { margin-top: 12px;}
+/***** Images Padding Config *****/
+.img-rounded { border-radius: 4px;}
+.img-n-pargaraph .pull-right {
+    padding: 0;
+    margin: 10px 0 15px 15px;
+}
+.img-n-pargaraph .pull-left {
+    padding: 0;
+    margin: 10px 15px 15px 0;
+}
+/***** Template Header *****/
+header.template_header h1 {
+    font: normal normal 200 50px/150px 'Fira Sans', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    color: #fff;
+}
+header.template_header h1 span {
+    position: relative; 
+    top: -15px;
+}
+
+/***** Contact *****/
+#templatemo_contact {
+    background: #455a64 url(../images/login7.jpg);
+    background-repeat: no-repeat;  
+    background-attachment:fixed;
+    background-position: center;
+    color: #fff;
+}
+#templatemo_contact header h1 { color: #fff;}
+#templatemo_contact p, #templatemo_contact a  {
+    line-height: 2.5em;
+    color: #fff;
+}
+#templatemo_contact form .form-group { margin-top: 30px;}
+#templatemo_contact form input.form-control,
+#templatemo_contact form button.form-control,
+#templatemo_contact form textarea.form-control ,
+#templatemo_contact form select.form-control { border-bottom: 3px solid #fff;color: #fff;}
+#templatemo_contact form input.form-control:focus,
+#templatemo_contact form button.form-control:focus,
+#templatemo_contact form textarea.form-control:focus { border-bottom-color: #275267;}
+#templatemo_contact form textarea.form-control { min-height: 120px;}
+#templatemo_contact form .input-group-addon { border-bottom: 3px solid #fff;}
+#templatemo_contact form .input-group-addon i { color: #fff;}
+#templatemo_contact .social {
+    margin: 0px auto 40px auto;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+#templatemo_contact .social li {
+    margin-left: 0;
+    width: 25%;
+}
+#templatemo_contact .social a {
+    margin: 50px auto 4px auto;
+    background-color: #fff;
+    border-radius: 50px;
+    padding-top: 15px;
+    font-size: 40px;
+    line-height: 40px;
+    transition: .5s;
+    display: block;
+    height: 70px;
+    color: #fff;
+    width: 70px;
+}
+#templatemo_contact .social a:hover {
+    transform: rotate(360deg);
+    color: #223741;
+}
+#templatemo_contact .social .social-facebook { background: #4a6fb5;}
+#templatemo_contact .social .social-twitter { background: #28a9e0;}
+#templatemo_contact .social .social-youtube { background: #f86d70;}
+#templatemo_contact .social .social-instagram { background: #cab9a9;}
+/***** Footer *****/
+footer {
+    padding: 20px 0 16px 0;
+    text-align: center;
+    background: #fff;
+}
+.footer-copyright p {
+    margin:20px auto 20px auto;
+    text-align: center;
+    line-height: 32px;
+    color: #666;
+}
+.footer-copyright a { 
+    border-bottom: 1px dotted #fff;
+    color: #666;
+}
+.footer-copyright a:hover {
+    color: #000;
+    border: 0;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .show-menu {right: 50px;}
+    nav.main-menu {right: 50px;}
+}
+@media (max-width: 991px) {
+    .show-menu {right: 30px;}
+    nav.main-menu {right: 30px;}
+}
+@media (max-width: 767px) {
+    #templatemo_download h2 {font-size: 70px;}
+    #templatemo_home h2 {font-size: 26px;}
+}
+@media (max-width: 400px) {
+    nav.main-menu {right: 10px;}
+    .show-menu {right: 10px;}
+    #templatemo_contact .social a {
+        padding: 18px;
+        font-size: 25px;
+        line-height: 20px;
+        height: 60px;
+        width: 60px;
+    }
+}

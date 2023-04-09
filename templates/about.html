@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Breast Cancer {% endblock title%}
+
+
+{% block body %}
+
+<div id="about" class="about-us section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+          <img src="{{ url_for('static', filename='assets/images/about-left-image.png') }}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="section-heading">     
+          <h2>ABOUT US</h2>
+        </div>
+        <div style="text-align: justify;">
+        <p>The approach is to address a problem is to adopt computer aided diagnosis technology as an aid diseases.
+          Although Predict produces good estimates, it cannot say whether an individual patient will survive their cancer or not. It can only provide the average survival rate for people in the past of a similar age and with similar cancers.
+          <br>It is a website in which user will add symptoms and 
+          website will predict diseases based on dataset prepared from different sources and good 
+          study and machine learning techniques applied to the dataset.</p>
+        </div>
+        <!-- <div class="main-green-button"><a href="#">Discover company</a></div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="ie_11_scroll">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="hhhwidth=device-width, initial-scale=1">
+        <title>Login</title>
+
+        <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/templatemo_style.css')}}">
+        
+        <link rel="shortcut icon" href="{{url_for('static',filename='assets/images/fib-icon.png')}}" />
+       
+    </head>
+    <body>
+        <div></div>
+        
+			{% with messages = get_flashed_messages(with_categories=true) %}  
+			{% if messages %}  
+				  {% for cato,message in messages %}
+			  
+				
+				  <div class="alert alert-{{cato}} alert-dismissible d-flex align-items-center justify-content-between" role="alert">
+						
+						<button type="button" class="btn btn-light btn-outline-{{cato}} btn-sm" data-bs-dismiss="alert" aria-label="Close" style="margin: 0% 0% 5% 0%;color: red;">{{message}}</button>
+				  </div>
+				
+				  {% endfor %}  
+			{% endif %}  
+			{% endwith %}    
+        <section id="templatemo_contact" style="margin: 8% 0% 0% 25%;width: 50%;border-radius: 10%;padding-bottom: 1%;background-size: 50% 72%;">
+            <div class="container" style="width: 65%;">
+                <div class="row"  style=" margin: -5% 0% -7% 0%;">
+                    <div class="col-sm-4">
+                        <header class="template_header">
+                            <h1 class="text-center"> Login </h1>
+                        </header>
+                       
+                    </div>
+                </div>
+                <form role="form" action="/home" method="post"  style=" margin-top: -7%;">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                            <input type="password" name="password" class="form-control" id="contact-password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div style="font-size: 80%;">
+                            For new users <a href="/signup" style="font-size: 100%; color: rgb(159, 214, 250);"> click here...  </a>
+                            <br>
+                            <a href="/forget"  style="font-size: 100%; color: rgb(159, 214, 250);"> Forget Password? </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-top: 0%; margin-bottom: 2px;">
+                        <div class="col-xs-4 col-xs-offset-8">
+                            <button type="submit" class="form-control">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

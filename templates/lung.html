@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %} Lungs Cancer {% endblock title%}
+
+
+{% block body %}
+<div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact" action="" method="post">
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                  <h6>The Disease Predictor</h6>
+                  <h2>Lung <span>Cancer</span> Diagnosis</h2>
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="age" id="age" placeholder="Enter Age" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="gender" id="gender" placeholder="Gender [0:Male][1:Female]" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Alcohol usage" id="Alcohol usage" placeholder="Alcohol usage" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Dust Allergy" id="Dust Allergy" placeholder="Dust Allergy" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Genetic Risk" id="Genetic Risk" placeholder="Genetic Risk" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Chronic Lung Disease" id="Chronic Lung Disease" placeholder="Chronic Lung Disease" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Smoker" id="Smoker" placeholder="Smoker" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Chest Pain" id="Chest Pain" placeholder="Chest Pain" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Coughing of Blood" id="Coughing of Blood" placeholder="Coughing of Blood" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <fieldset>
+                      <input type="text" name="Shortness of Breath" id="Shortness of Breath" placeholder="Shortness of Breath" autocomplete="on" style="text-align: center;" required>
+                    </fieldset>
+                  </div>                                      
+
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button ">Submit</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="contact-info">
+                  <ul>
+                    <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-01.png') }}" alt="email icon">
+                      </div>
+                      <a href="#">info@diagnosis.com</a>
+                    </li>
+                    <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-02.png') }}" alt="phone">
+                      </div>
+                      <a href="#">+001-002-0034</a>
+                    </li>
+                    <!-- <li>
+                      <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/images/contact-icon-03.png') }}" alt="location">
+                      </div>
+                      <a href="#">26th Street, Digital Villa</a>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock body %}

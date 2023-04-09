@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Heart Disease Result{% endblock title%}
+
+
+{% block body %}
+<div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact">
+            
+          <!-- <div style="background-color: white;padding: 4% 6% 3% 0%;border-radius: 15% 0%;"> -->
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                  <h6>The Disease Predictor</h6>
+                  <h2> Heart <span>Disease</span> Diagnosis</h2>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="row">
+
+                  <div class="col-lg-7">
+                    <div>
+                      {{l}}
+                      </div>
+                  </div>
+                  
+              <div class="col-lg-3">
+                <div class="contact-info">
+                  <img src="{{ url_for('static', filename='assets/images/'+l[-8:]+'.jpg') }}" alt="">
+                </div>
+              </div>
+                  <div class="col-lg-11">
+                    <fieldset>
+                      <button id="form-submit" class="main-button "> <a href="/Heart" style="color: white;"> <i class='arrow left' aria-hidden="true"></i> Back </a></button>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock body %}
