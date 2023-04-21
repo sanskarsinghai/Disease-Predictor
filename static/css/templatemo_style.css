@@ -111,6 +111,13 @@ form button.form-control:focus {
     border-bottom-color: #275267;
     background-color: gray;
 }
+
+.j-c-b {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+    display: flex;
+  }
+
 form textarea.form-control { min-height: 120px;}
 form .input-group-addon { 
     border: 0px;
@@ -148,8 +155,9 @@ header.template_header h1 span {
 #templatemo_contact {
     background: #455a64 url(../images/login7.jpg);
     background-repeat: no-repeat;  
-    background-attachment:fixed;
+    background-attachment:local;
     background-position: center;
+    background-size: 100% 100%;
     color: #fff;
 }
 #templatemo_contact header h1 { color: #fff;}

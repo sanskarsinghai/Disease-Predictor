@@ -15,7 +15,7 @@
     </head>
     <body>
         <div></div>
-        <section id="templatemo_contact" style="margin: 3.85% 0% 0% 25%;width: 50%;border-radius: 10%;padding-bottom: 1%;background-size: 50% 85%;">
+        <section id="templatemo_contact" style="margin: 3.85% 0% 0% 25%;width: 50%;border-radius: 10%;padding-bottom: 1%;">
             <div class="container" style="width: 65%;">
                 <div class="row"  style=" margin: 10% 0% -7% 0%;">
                     <div class="col-sm-0">
@@ -25,26 +25,36 @@
                        
                     </div>
                 </div>
-                <form role="form" action="/home" method="post"  style=" margin-top: -7%;">
+
+                
+                {% if msg!=""%}
+                    
+                <div class="col-sm-12" style="color:red">
+                {{msg}}
+                </div>
+                
+                {% endif%}
+
+                <form role="form" action="/forget" method="post"  style=" margin-top: -7%;">
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                            <input type="password" name="new_password" class="form-control" id="password" placeholder="New password">
+                            <input type="password" name="new_password" class="form-control" id="password" placeholder="New password" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                            <input type="password" name="con_password" class="form-control" id="contact-password" placeholder="Confirm password">
+                            <input type="password" name="con_password" class="form-control" id="contact-password" placeholder="Confirm password" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                            <input type="password" name="otp" class="form-control" id="otp" placeholder="OTP">
+                            <input type="password" name="otp" class="form-control" id="otp" placeholder="OTP" required>
                         </div>
                     </div>
 

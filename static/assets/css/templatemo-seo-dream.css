@@ -1522,7 +1522,7 @@ contact
 }
 
 .contact-us .contact-info {
-  padding: 40px 30px;
+  padding: 110px 30px;
   border: 2px solid #eee;
 }
 
@@ -1576,6 +1576,122 @@ form#contact input {
   margin-bottom: 20px;
   font-weight: bold;
 }
+
+.negative{  
+  animation-name: nega;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-direction: alternate;  
+  animation-timing-function: ease-in-out;
+  overflow: auto;
+  margin-top: 24%;
+}
+
+@keyframes nega {
+  0% {background: black url(../images/negative.jpg) fixed;
+      background-repeat: no-repeat;  
+      background-size:cover;
+      background-attachment:fixed;
+      background-position: center;}
+  100% {background: black url(../images/negative2.jpg) fixed;
+      background-repeat: no-repeat;  
+      background-size:cover;
+      background-attachment:fixed;
+      background-position: center;}
+  }
+
+  .positive{  
+    animation-name: posi;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-direction: alternate;  
+    animation-timing-function: ease-in-out;
+    overflow: auto;    
+    margin-top: 24%;
+   
+  }
+  
+  @keyframes posi {
+    0% {background: black url(../images/positive.jpg) fixed;
+        background-repeat: no-repeat;  
+        background-size:cover;
+        background-attachment:fixed;
+        background-position: center;}
+    100% {background: black url(../images/positive2.jpg) fixed;
+        background-repeat: no-repeat;  
+        background-size:cover;
+        background-attachment:fixed;
+        background-position: center;}
+    }
+  
+    .High{  
+      animation-name: high;
+      animation-iteration-count: infinite;
+      animation-duration: 10s;
+      animation-direction: alternate;  
+      animation-timing-function: ease-in-out;
+      overflow: auto;
+    }
+    
+    @keyframes high {
+      0% {background: black url(../images/High.jpg) fixed;
+          background-repeat: no-repeat;  
+          background-size:cover;
+          background-attachment:fixed;
+          background-position: center;}
+      100% {background: black url(../images/high2.png) fixed;
+          background-repeat: no-repeat;  
+          background-size:cover;
+          background-attachment:fixed;
+          background-position: center;}
+      }
+    
+      
+    .Medium{  
+      animation-name: medi;
+      animation-iteration-count: infinite;
+      animation-duration: 10s;
+      animation-direction: alternate;  
+      animation-timing-function: ease-in-out;
+      overflow: auto;
+    }
+    
+    @keyframes medi {
+      0% {background: black url(../images/Medium.jpg) fixed;
+          background-repeat: no-repeat;  
+          background-size:cover;
+          background-attachment:fixed;
+          background-position: center
+          ;}
+      100% {background: black url(../images/medium2.png) fixed;
+          background-repeat: no-repeat;  
+          background-size:cover;
+          background-attachment:fixed;
+          background-position: center;}
+      }
+    
+      .Low{  
+        animation-name: low;
+        animation-iteration-count: infinite;
+        animation-duration: 10s;
+        animation-direction: alternate;  
+        animation-timing-function: ease-in-out;
+        overflow: auto;
+      }
+      
+      @keyframes low {
+        0% {background: black url(../images/Low.jpg) fixed;
+            background-repeat: no-repeat;  
+            background-size:cover;
+            background-attachment:fixed;
+            background-position: center;}
+        100% {background: black url(../images/low2.png) fixed;
+            background-repeat: no-repeat;  
+            background-size:cover;
+            background-attachment:fixed;
+            background-position: center;}
+        }
+      
 
 form#contact input::placeholder {
   color: #585555;

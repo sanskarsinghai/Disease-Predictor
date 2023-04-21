@@ -23,14 +23,17 @@
                 <div class="row">
 
                   <div class="col-lg-7">
-                    <div>
-                      {{l}}
+                    <div style="text-align: justify;">
+                      {% for i in r %}
+                      {{i}}
+                      <br>
+                      {% endfor %}
                       </div>
                   </div>
                   
               <div class="col-lg-3">
-                <div class="contact-info">
-                  <img src="{{ url_for('static', filename='assets/images/'+l[-8:]+'.jpg') }}" alt=""/>
+                <div class="contact-info {{l}}">
+
                 </div>
               </div>
                   <div class="col-lg-11">
