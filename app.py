@@ -37,6 +37,7 @@ def strongpassword(p):
             return True
 
 @app.route('/',methods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def loginp_page():
 
     msg=None
@@ -160,7 +161,6 @@ def forget_password():
             
         return render_template("forget.html",msg=msg)
 
-
     return render_template("forget.html")
 
 @app.route("/logout")
@@ -169,6 +169,55 @@ def logout_page():
       session.pop('email')
       session.pop('name')
       flash("Logout Successfully","success")
+    return redirect("/")
+
+
+@app.route('/profile',methods=['GET','POST'])
+def profile():
+    if 'email' in session:        
+        lo=Users.query.filter_by(email=session['email']).first()
+        if request.method=="POST":
+            l=list()
+            for i in request.form:
+                l.append(request.form[i])
+            
+            p = hashlib.md5(l[4].encode())
+
+            if lo.password!=p.hexdigest():
+                return render_template("profileupdate.html",lo=lo,msg="!! Invalid current password !!")
+            f=0
+            if lo.uname!=l[0]:
+                lo.uname=l[0]
+                f=1
+
+            if lo.email!=l[1]:
+                e=Users.query.filter_by(email=l[1]).first()
+                if e is not None:
+                    return render_template("profileupdate.html",lo=lo,msg="!! Email already registered !!")
+                lo.email=l[1]
+                f=1
+
+            if l[2]!="":
+                s=strongpassword(l[2])
+                if l[2]!=l[3]:
+                    return render_template("profileupdate.html",lo=lo,msg="!! New and confirm password not match !!")
+                elif s!=True:
+                    return render_template("profileupdate.html",lo=lo,msg=s)
+                else:
+                    p = hashlib.md5(l[2].encode())
+                    lo.password=p.hexdigest()
+                    f=1
+
+            if f==1:
+                db.session.add(lo)
+                db.session.commit()                    
+                flash("Your profile successfully updated","success")
+            else:
+                flash("Nothing is updated","success")
+
+            return redirect('/logout')
+
+        return render_template("profileupdate.html",lo=lo)
     return redirect("/")
 
 @app.route('/home',methods=["GET","POST"])

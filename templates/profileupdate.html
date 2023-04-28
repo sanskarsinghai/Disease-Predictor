@@ -1,20 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %} Breast Cancer {% endblock title%}
+{% block title %} Profile Update {% endblock title%}
 
 
 {% block body %}
+
+<script>
+  function hideElements(){
+    document.getElementById("cupass").style.display="block";
+    document.getElementById("form-submit").style.display="block";
+    document.getElementById("tog").style.display="block";
+    document.getElementById("Update").style.display="none";
+  }
+</script>
 
 <div id="contact" class="contact-us section">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-          <form id="contact" action="/BreastCancer" method="post">
+          <form id="contact" action="/profile" method="post">
             <div class="row">
               <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
                   <h6>The Disease Predictor</h6>
-                  <h2> Breast <span>Cancer</span> Diagnosis</h2>
+                  <h2> Profile <span>Update</span></h2>
+                  {% if msg %}
+                  <br>
+                  <h4 style="color: red;">{{msg}}</h4>
+                  {% endif %}
                 </div>
               </div>            
 
@@ -23,76 +36,79 @@
 
                   <div class="col-lg-5">
                       <fieldset>
-                        <input type="text" name="radius" id="radius" placeholder="Enter the Mean Radius" autocomplete="off" style="text-align: center;" required>
+                        <input type="text" name="username" id="username" value="{{lo.uname}}" autocomplete="off" style="text-align: center;">
                       </fieldset>
                   </div>
-          
-                  <div class="col-lg-1"  style="padding: 0.5% 6% 0% 0%;">
-                    <div  data-toggle="tooltip" title="Mean of distances from center to points on the perimeter" >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                    </svg>
-                    </div>
-                </div>
-        
-                <div class="col-lg-5">
-                  <fieldset>
-                    <input type="text" name="texture" id="texture" placeholder="Enter the mean texture" autocomplete="off" style="text-align: center;" required>
-                  </fieldset>
-                </div>
-    
-                <div class="col-lg-1"  style="padding: 0.5% 6% 0% 0%;">
-                  <div  data-toggle="tooltip" title="Standard deviation of gray-scale values" >
+                  <div class="col-lg-1" style="padding: 0.5% 6% 0% 0%;">
+                    <div  data-toggle="tooltip" title="To change username enter new username" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                  </svg>
-                  </div>
-                </div>
-  
-                <div class="col-lg-5">
-                  <fieldset>
-                    <input type="text" name="perimeter" id="perimeter" placeholder="Enter the mean perimeter" autocomplete="off" style="text-align: center;" required>
-                  </fieldset>
-                </div>
-        
-                  <div class="col-lg-1"  style="padding: 0.5% 6% 0% 0%;">
-                    <div  data-toggle="tooltip" title="Perimeter of the nucleus" >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                    </svg>
-                    </div>
-                </div>
+                    </svg></div>
+                  </div>
   
+        
                 <div class="col-lg-5">
                   <fieldset>
-                    <input type="text" name="area" id="area" placeholder="Enter the mean area" style="text-align: center;" autocomplete="off" required>
+                    <input type="text" name="email" id="email" value="{{lo.email}}" autocomplete="off" style="text-align: center;">
                   </fieldset>
-                </div>
-
-                <div class="col-lg-1"  style="padding: 0.5% 6% 0% 0%;">
-                  <div  data-toggle="tooltip" title="Area of the nucleus" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-                  </svg>
-                  </div>
-                </div>
-    
-                <div class="col-lg-5">
-                      <fieldset>
-                        <input type="text" name="smoothness" id="smoothness" placeholder="Enter the mean smoothness" style="text-align: center;" autocomplete="off" required>
-                      </fieldset>
-                </div>
-
+                </div>                
                 <div class="col-lg-1" style="padding: 0.5% 6% 0% 0%;">
-                  <div  data-toggle="tooltip" title="Local variation in radius lengths" >
+                  <div  data-toggle="tooltip" title="To change email enter new email" >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
                   </svg></div>
                 </div>
 
-                  <div class="col-lg-12">
+    
+  
+                <div class="col-lg-5">
+                  <fieldset>
+                    <input type="password" name="newpass" id="newpass" placeholder="Enter the new password" autocomplete="off" style="text-align: center;">
+                  </fieldset>
+                </div>
+                <div class="col-lg-1" style="padding: 0.5% 6% 0% 0%;">
+                  <div  data-toggle="tooltip" title="To change password enter new password" >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                  </svg></div>
+                </div>
+
+        
+                <div class="col-lg-5">
+                  <fieldset>
+                    <input type="password" name="conpass" id="conpass" placeholder="Confirm the new password" style="text-align: center;" autocomplete="off">
+                  </fieldset>
+                </div>                
+                <div class="col-lg-1" style="padding: 0.5% 6% 0% 0%;">
+                  <div  data-toggle="tooltip" title="Want to change password, enter the confirm password" >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                  </svg></div>
+                </div>
+
+                
+                <div class="col-lg-12">
+                  <fieldset>
+                    <button type="button" id="Update" onclick="hideElements()">Update</button>
+                  </fieldset>
+                </div>
+    
+                <div class="col-lg-5">
+                      <fieldset>
+                        <input type="password" name="cupass" id="cupass" placeholder="Enter the current password" style="text-align: center;display: none;" autocomplete="off" required>
+                      </fieldset>
+                </div>
+                <div class="col-lg-1" id="tog" style="padding: 0.5% 6% 0% 0%; display: none;">
+                  <div  data-toggle="tooltip" title="To update anything enter the current password for verification" >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#088ec3" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                  </svg></div>
+                </div>
+
+
+                  <div class="col-lg-12" style="padding-left: 46%;">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="main-button ">Submit</button>
+                      <button type="submit" id="form-submit" class="main-button " style="display: none;">Submit</button>
                     </fieldset>
                   </div>
                 </div>
