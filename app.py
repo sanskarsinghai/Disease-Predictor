@@ -5,6 +5,8 @@ import re
 import pickle
 import random as rd
 import smtplib
+import pytz
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secret key'
@@ -19,6 +21,13 @@ class Users(db.Model):
     role=db.Column(db.String(10),nullable=False)
     status=db.Column(db.String(10),nullable=False)
     password=db.Column(db.String(20), nullable=False)
+
+class UnSendMails(db.Model):
+    usmn=db.Column(db.String(20),primary_key=True)
+    email=db.Column(db.String(20),nullable=False)
+    msg=db.Column(db.String(1000),nullable=False)
+    date=db.Column(db.String(20),nullable=False)
+
 
 def strongpassword(p):
         if (len(p)<9):
@@ -35,6 +44,97 @@ def strongpassword(p):
             return "!! No voidspace allowed!!"
         else:
             return True
+
+
+@app.route("/admin/",methods=["GET","POST"])
+@app.route("/admin/login",methods=["GET","POST"])
+def adminlogin():
+    # global em,pa
+    if 'un' in session:
+        flash("You are already login","success")
+        return render_template('admin/index.html')
+
+    if request.method=="POST":
+        username=request.form['email']
+        password=request.form['password']
+        
+        if username=="" or password=="":
+            flash("Please Enter Email or Password","warning")
+            return redirect("/admin/login")
+        
+        if username=='Admin' and password=='Admin':
+            session['un']='Admin'
+            return redirect("/admin/home")
+        else:
+            flash("Invalid username or password","warning")
+            return redirect("/admin/login")
+
+    return render_template("admin/login.html")
+
+@app.route("/admin/home")
+def adminhome():
+    if 'un' in session:
+        return render_template("/admin/index.html")
+    else:
+        return redirect("/admin/login")
+
+@app.route("/admin/logout",methods=["GET","POST"])
+def adminlogout():
+    # global em,pa
+    if 'un' in session:
+        session.pop('un')
+        flash("Admin successfully logout","success")
+        return redirect('/admin/login')
+
+@app.route("/admin/usermanagement")
+def users():
+    if 'un' in session:
+        allfeed=Users.query.filter_by(role='User').all()
+        return render_template("admin/usermanagement.html",allfeed=allfeed)
+    else:
+        return redirect("/admin/")
+
+@app.route("/admin/mailmanagement")
+def mails():
+    if 'un' in session:
+        allfeed=UnSendMails.query.all()
+        return render_template("admin/mailmanagement.html",allfeed=allfeed)
+    else:
+        return redirect("/admin/")
+
+@app.route("/admin/status/<string:email>")
+def status(email):
+    if 'un' in session:
+        s=Users.query.filter_by(email=email).first()
+        if s.status=="Unblocked":
+            s.status="Blocked"
+        else:
+            s.status="Unblocked"
+        a=s.status
+        db.session.add(s)
+        db.session.commit()
+        flash(email+" is "+a+" successfully","success")
+        return redirect("/admin/usermanagement")
+
+@app.route("/admin/send/<string:usmn>")
+def unsendmail(usmn):
+    if 'un' in session:
+        se=UnSendMails.query.filter_by(usmn=usmn).first()
+        
+        try:
+            s = smtplib.SMTP('smtp.gmail.com', 587)
+            s.starttls()
+            s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
+            s.sendmail('&&&&&&&&&&&&&&&&&',se.email,se.msg)   
+        except Exception as e:
+            pass
+        
+        db.session.delete(se)
+        db.session.commit()
+
+        flash("Unsend mail of id "+usmn+" is send successfully to mail id "+se.email,"success")
+        return redirect("/admin/mailmanagement")
+
 
 @app.route('/',methods=['GET','POST'])
 @app.route('/login',methods=['GET','POST'])
@@ -171,7 +271,6 @@ def logout_page():
       flash("Logout Successfully","success")
     return redirect("/")
 
-
 @app.route('/profile',methods=['GET','POST'])
 def profile():
     if 'email' in session:        
@@ -261,13 +360,25 @@ def Breast_Cancer():
             for i in rl[1].split('\n'):
                 r.append(i)
             msg+=''.join(rl[1])
+        
+        try:
+            s = smtplib.SMTP('smtp.gmail.com', 587)
+            s.starttls()
+            s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
+            s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)   
+        except Exception as e:
+            k=msg.index(',')
+            ist = pytz.timezone('Asia/Kolkata')
+            a=datetime.now(ist)  
+            s=a.strftime("%d-%m-%Y %I-%M-%S %p") 
 
-        s = smtplib.SMTP('smtp.gmail.com', 587)
-        s.starttls()
-        s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
-        s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)   
+            msge=msg[:k+1]+"\n\nThis is the analysis result you requested from disease predector on "+s+"."+msg[k+1:]
             
-        return render_template("breast out.html",l=im,r=r)
+            usm=UnSendMails(usmn=session['email']+"_"+s,email=session['email'],msg=msge,date=s)
+            db.session.add(usm)
+            db.session.commit()
+        finally:
+            return render_template("breast out.html",l=im,r=r)
 
     return render_template("breast.html")
 
@@ -301,12 +412,24 @@ def Lungs_Cancer():
                 r.append(i)
             msg+= ''.join(rl[2])
         
-        s = smtplib.SMTP('smtp.gmail.com', 587)
-        s.starttls()
-        s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
-        s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)   
-        
-        return render_template("lung out.html",l=re[0],r=r)
+        try:
+            s = smtplib.SMTP('smtp.gmail.com', 587)
+            s.starttls()
+            s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
+            s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)
+        except Exception as e:
+            k=msg.index(',')
+            ist = pytz.timezone('Asia/Kolkata')
+            a=datetime.now(ist)  
+            s=a.strftime("%d-%m-%Y %I-%M-%S %p") 
+
+            msge=msg[:k+1]+"\n\nThis is the analysis result you requested from disease predector on "+s+"."+msg[k+1:]
+            
+            usm=UnSendMails(usmn=session['email']+"_"+s,email=session['email'],msg=msge,date=s)
+            db.session.add(usm)
+            db.session.commit()
+        finally:
+            return render_template("lung out.html",l=re[0],r=r)
 
     return render_template("lung.html")
 
@@ -339,12 +462,24 @@ def Heart():
                 r.append(i)    
             msg+= ''.join(rl[1])
         
-        s = smtplib.SMTP('smtp.gmail.com', 587)
-        s.starttls()
-        s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
-        s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)       
+        try:
+            s = smtplib.SMTP('smtp.gmail.com', 587)
+            s.starttls()
+            s.login("predictordisease@gmail.com", "mgsrthvsrtosljfr")
+            s.sendmail('&&&&&&&&&&&&&&&&&',session['email'],msg)       
+        except Exception as e:
+            k=msg.index(',')
+            ist = pytz.timezone('Asia/Kolkata')
+            a=datetime.now(ist)  
+            s=a.strftime("%d-%m-%Y %I-%M-%S %p") 
 
-        return render_template("heart out.html",l=im,r=r)
+            msge=msg[:k+1]+"\n\nThis is the analysis result you requested from disease predector on "+s+"."+msg[k+1:]
+            
+            usm=UnSendMails(usmn=session['email']+"_"+s,email=session['email'],msg=msge,date=s)
+            db.session.add(usm)
+            db.session.commit()
+        finally:
+            return render_template("heart out.html",l=im,r=r)
 
     return render_template("heart.html")
 

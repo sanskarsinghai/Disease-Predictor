@@ -1,0 +1,114 @@
+{% extends "admin/base.html" %}
+
+{% block title %} User Management {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        
+
+        <!-- Hero -->
+        <section class="section section-header pb-11 bg-primary text-white">  
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xl-8 text-center">
+                        {% with messages = get_flashed_messages(with_categories=true) %}  
+                        {% if messages %}  
+                              {% for cato,message in messages %}
+                            
+                              <div class="alert alert-{{cato}} alert-dismissible d-flex align-items-center justify-content-between" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    {{message}}
+                                    <button type="button" class="btn btn-light btn-outline-{{cato}} btn-sm" data-bs-dismiss="alert" aria-label="Close" style="margin:0% 0%">Dismiss</button>
+                              </div>
+                            
+                              {% endfor %}  
+                        {% endif %}  
+                        {% endwith %}
+                        <h1 class="display-2 mb-3">User Details</h1>
+                        <p class="lead"></p>        
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        
+        
+        <!-- Section -->
+        <section class="section section-lg pt-6">
+            <div class="container">
+
+              <div class="table-responsive-sm">
+                <h1 class="text-center my-4">User Handle Table</h1>
+                     {% if allfeed|length==0 %}
+                     <div class="alert alert-info text-center" role="alert">
+                         No Users Availabe!!!
+                       </div>
+                     {% else %}
+                     <!-- <table class="table table-hover my-4 text-center">
+                        -->
+               <div class="mb-5">
+                       
+                 <table class="table table-striped" style="text-align: center;"> 
+               
+                         <thead> 
+                           <tr>
+                             
+                             
+                           <th scope="col"  style="width:10%">S No</th>
+                           <th scope="col">Email</th>
+                           <th scope="col">User Name</th>
+                           <th scope="col">Status</th>
+                           <th scope="col">Update Status</th>
+                             
+                           </tr>
+                           
+                         </thead>
+                         <tbody>
+                 {% for rows in allfeed %}
+                   <tr>
+                     <th scope="row">{{loop.index}}</th>                
+                    <td>{{rows.email}}</td>
+                     <td>{{rows.uname}}</td>
+                     <td>{{rows.status}}</td>
+                     
+                     {% if rows.status=='Unblocked' %}
+                       
+                     {% set s='blocked'%}
+                 
+                     {% else %}
+                 
+                     {% set s='Unblocked'%}
+                 
+                     {% endif %}
+                     
+                       
+                       <td>
+                         <a href="/admin/status/{{rows.email}} " type="button" class="btn btn-outline-dark btn-sm">{{s}}</a>
+                       </td>
+                 
+                 </tr>
+                 {% endfor %}
+               
+                 {% endif %}
+                 </tbody>
+               </table>
+               </div>
+               </div>    
+              
+            </div>
+        </section> 
+        <!-- End of section -->
+
+    </main>
+
+    {% include 'includes/footer.html' %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,100 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %}Admin Sign IN {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="/static/Admin/assets/img/pages/form-image.jpg">
+            
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="signin-inner my-4 my-lg-0 bg-white shadow-soft border rounded border-gray-300 p-4 p-lg-5 w-100 fmxw-500">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                
+        {% with messages = get_flashed_messages(with_categories=true) %}  
+        {% if messages %}  
+              {% for cato,message in messages %}
+            
+              <div class="alert alert-{{cato}} alert-dismissible d-flex align-items-center justify-content-between" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    {{message}}
+                    <button type="button" class="btn btn-light btn-outline-{{cato}} btn-sm" data-bs-dismiss="alert" aria-label="Close" style="margin:0% 0%">Dismiss</button>
+              </div>
+            
+              {% endfor %}  
+        {% endif %}  
+        {% endwith %}  
+                                <h1 class="mb-0 h3">
+                                    <b>Disease Predictor</b> - Admin Login
+                                </h1>
+                                <br />
+                                <span class="font-weight-normal">
+                                    {% if msg %}
+                                        {{ msg | safe }}
+                                    {% else %}
+                                        Add your credentials
+                                    {% endif %}                                  
+                                </span>
+                            </div>
+                            <form method="post" action="/admin/login" class="mt-4">
+
+                               
+
+                                <!-- Form -->
+                                
+                                <div class="form-group mb-4">
+                                    <label for="username">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+                                        <input type="text" class="form-control" id="inputEmail2" name="email" placeholder="Username" required>
+                                    </div>  
+                                </div>
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-lock"></span></span>
+                                            <input type="password" class="form-control" id="inputEmail3" name="password" placeholder="Password" required>
+                                            
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check mb-0">
+                                            
+                                            <!-- <input class="form-check-input" type="checkbox" value="" id="remember"> -->
+                                         
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" name="login" class="btn btn-primary">Sign in</button>
+                                </div>
+                            </form>
+
+                            <br />
+
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

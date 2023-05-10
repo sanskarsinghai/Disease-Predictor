@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Primary Meta Tags -->
+<title>
+    Hybrid Cryptography Admin Dashboard
+</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta name="author" content="Themesberg">
+<meta name="description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<link rel="canonical" href="https://appseed.us/apps/flask-apps/flask-pixel-bootstrap-uikit">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://demo.themesberg.com/pixel-bootstrap-5-ui-kit">
+<meta property="og:title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta property="og:description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<meta property="og:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/pixel-lite/pixel-lite-preview.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://demo.themesberg.com/pixel-bootstrap-5-ui-kit">
+<meta property="twitter:title" content="Pixel - Free Bootstrap 5 UI Kit">
+<meta property="twitter:description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+<meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/pixel-lite/pixel-lite-preview.jpg">
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="120x120" href="/static/Admin/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/Admin/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/Admin/favicon.png">
+<link rel="manifest" href="/static/Admin/assets/img/favicon/site.webmanifest">
+<link rel="mask-icon" href="/static/Admin/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fontawesome -->
+<link type="text/css" href="/static/Admin/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+<!-- Pixel CSS -->
+<link type="text/css" href="/static/Admin/assets/css/pixel.css" rel="stylesheet">
+
+</head>
+<body>
+    
+    {% include 'admin/navigation.html' %}
+
+    <main>
+
+    
+        <!-- Hero -->
+        <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        
+                        {% with messages = get_flashed_messages(with_categories=true) %}  
+                        {% if messages %}  
+                              {% for cato,message in messages %}
+                            
+                              <div class="alert alert-{{cato}} alert-dismissible d-flex align-items-center justify-content-between" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    {{message}}
+                                    <button type="button" class="btn btn-light btn-outline-{{cato}} btn-sm" data-bs-dismiss="alert" aria-label="Close" style="margin:0% 0%">Dismiss</button>
+                              </div>
+                            
+                              {% endfor %}  
+                        {% endif %}  
+                        {% endwith %}  
+                        
+  
+                        <h1 class="fw-bolder display-2">
+                            Disease Predictor Admin Panel
+                        </h1>
+
+                        <!-- Button Modal -->
+                        <div style="padding: 7%;">
+                            <div class="d-flex justify-content-center align-items-center d-md-inline">
+                                <a href="/admin/usermanagement" class="btn btn-tertiary mb-3 mt-2 me-2 me-md-3 animate-up-2">
+                                    <span class="fas fa-th-large mx-2">
+                                        <div class="d-md-inline mx-2">User Management</div>
+                                    </span>
+                                    </a>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center d-md-inline">
+                                <a href="/admin/mailmanagement" class="btn btn-tertiary mb-3 mt-2 me-2 me-md-3 animate-up-2">
+                                    <span class="fas fa-th-large mx-2">
+                                        <div class="d-md-inline mx-2">Mail Management</div>
+                                    </span>
+                                    </a>
+                            </div>
+        
+                    </div>
+                        <!-- <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
+                            
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="fill-white"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+                    <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+                </svg></figure>
+        </section>
+
+        <div class="section py-0">
+            <div class="container mt-n10 mt-lg-n12 z-2">
+                <div class="row justify-content-center">
+                    <!-- <div class="col-12 col-md-10"><img src="/static/assets/img/presentation-mockup.png"
+                            alt="Pixel Free Mockup"></div> -->
+                </div>
+            </div>
+        </div>
+
+    {% include 'includes/scripts.html' %}
+
+    {% include 'includes/footer.html' %}
+
+</body>
+</html>

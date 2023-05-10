@@ -1,0 +1,25 @@
+.logo{
+  margin: 0% 2% 0% 0%;
+ }
+ .lo {
+   height: 50px;
+ width: 50px;
+   background-color: lightgray;
+   color: black;
+   text-shadow:2px -2px 1px gray;
+   font-size:30px;
+   text-align: center;
+   border-radius: 50%;
+  padding: 6% 0%;
+}
+.lo:hover{
+ background-color: lightgreen;
+ color: darkgreen;
+ text-shadow:2px -2px 1px green;
+}
+.hr{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  size: 10%;
+}
